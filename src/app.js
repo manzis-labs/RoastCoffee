@@ -90,8 +90,31 @@ document.addEventListener('alpine:init', () => {
             }
         }
         checkoutButton.disabled = false;
-        checkoutButton.classList.remove('disabled')
-    })
+        checkoutButton.classList.remove('disabled');
+    });
+
+    // Kirim data ketika tombol checkout diklik
+    checkoutButton.addEventListener('click', function(e){
+        e.preventDefault();
+        const formData = new FormData(form);
+        const data = new URLSearchParams(formData);
+        const objData = Object.fromEntries(data);
+        const message = formatMessage(objData);
+        console.log(objData);
+        window.open('http://wa.me/62895364615701?text=' + encodeURIComponent(message));  
+    });
+
+    // Format pesan whatsapp
+    const formatMessage = (obj) =>{
+        return `*Data Costumer*\n
+Nama: ${obj.name}
+Email: ${obj.email}
+No. Telp: ${obj.phone}\n
+*Data Pesanan*\n
+${JSON.parse(obj.items).map((item) => `${item.name} (${item.quantity} x ${rupiah(item.price)}) \n`)}\n       
+*Total : ${rupiah(obj.total)}*\n
+Terima Kasih.`
+    }
 
     // Konversi ke Rupiah
     const rupiah = (number) => {
