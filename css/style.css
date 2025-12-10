@@ -277,6 +277,10 @@ font-size: 0.9rem;
     cursor: pointer;
 }
 
+.form-container .checkout-btn.disabled{
+    background-color: #999;
+    cursor: not-allowed;
+}
 
 /* .shopping-cart .remove-item{
     position: absolute;

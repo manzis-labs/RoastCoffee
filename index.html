@@ -21,7 +21,7 @@
      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
      <!-- App -->
-      <script src="src/app.js"></script>
+      <script src="src/app.js" async></script>
 </head>
 <body>
 
@@ -74,7 +74,6 @@
                 <span x-text="rupiah(item.total)"></span>
             </div>
         </div>
-        <!-- <i data-feather="trash-2" class="remove-item"></i>  -->
     </div>
     </template>
     <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem;">
@@ -105,7 +104,7 @@
                 <input type="number" name="phone" id="phone" autocomplete="off">
             </label>
 
-            <button class="checkout-btn" id="checkout-btn" type="submit" value="checkout">Checkout</button>
+            <button class="checkout-btn disabled" id="checkout-btn" type="submit" value="checkout">Checkout</button>
 
         </form>
     </div>
